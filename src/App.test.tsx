@@ -1,9 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
+import Routiing from './Routing';
+import { shallow } from 'enzyme';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('Render a App component', () => {
+  it('renders learn react link', () => {
+    const container = shallow(<App />);
+    expect(container.find('div').length).toEqual(1);
+  });
+
+  it('render a Routing Component in App', () => {
+    const container = shallow(<App />);
+    expect(container.containsMatchingElement(<Routiing />)).toEqual(true);
+  })
+  
+})
