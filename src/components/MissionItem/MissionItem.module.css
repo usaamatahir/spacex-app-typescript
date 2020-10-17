@@ -1,4 +1,3 @@
-
 .missionItem {
   width: 100vw;
   min-height: 100vh;
@@ -32,17 +31,17 @@
 }
 
 .tableStyle {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 15px;
-    padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 15px;
+  padding: 10px 0;
 }
 
 .tableHead {
-    width: 50%;
-    text-align: center;
+  width: 50%;
+  text-align: center;
 }
 
 #tableHeader {
@@ -50,7 +49,6 @@
 }
 
 #Body1 {
-    
   background-color: #9c6262;
 }
 
@@ -63,7 +61,6 @@ ul {
 }
 
 @media screen and (max-width: 720px) {
-      
   .description {
     width: 90vw;
   }
@@ -77,8 +74,8 @@ ul {
     border: 2px solid #e6d7d7;
     border-radius: 10px;
   }
-  
-  .tableStyle {      
+
+  .tableStyle {
     font-size: 12px;
   }
   #tableHeader {
