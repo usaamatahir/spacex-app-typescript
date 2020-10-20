@@ -1,24 +1,28 @@
-import React from 'react'
-import { useRocketsInfoQuery } from '../../generated/graphql';
-import RocketInfo from './RocketInfo';
-import styles from './RocketInfo.module.css';
-
+import React from "react";
+import { useRocketsInfoQuery } from "../../generated/graphql";
+import RocketInfo from "./RocketInfo";
+import styles from "./RocketInfo.module.css";
 
 const RocketInfoContainer = () => {
   const { data, error, loading } = useRocketsInfoQuery();
 
   if (loading) {
-    return <div className={styles.noData}><h1>Loading...</h1></div>;
+    return (
+      <div className={styles.noData}>
+        <h1>Loading...</h1>
+      </div>
+    );
   }
-  console.log(data)
 
   if (error || !data) {
-    return <div className={styles.noData}><h1>Error in fetching data</h1></div>;
+    let collection: any = localStorage.getItem("RocketInfo");
+    let offlineData = JSON.parse(collection);
+    return <RocketInfo data={offlineData} />;
   }
 
-  return <RocketInfo data={data} />;
-  
-}
+  localStorage.setItem("RocketInfo", JSON.stringify(data));
 
+  return <RocketInfo data={data} />;
+};
 
 export default RocketInfoContainer;

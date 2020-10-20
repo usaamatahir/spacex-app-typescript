@@ -11,12 +11,18 @@ const MissionItemContainer = () => {
   if (loading) {
     return <h1>Loading...</h1>;
   } else if (error || !data) {
-    return <h1>Error</h1>;
+    let collection: any = localStorage.getItem("MissionItem");
+    let offlineData = JSON.parse(collection);
+    const currentItem: any = offlineData.missions?.find(
+      (mission: any) => mission?.mission_id === id
+    );
+    return <MissionItem data={currentItem} />;
   } else {
+    localStorage.setItem("MissionItem", JSON.stringify(data));
     const currentItem: any = data.missions?.find(
       (mission: any) => mission?.mission_id === id
     );
-    console.log(currentItem);
+
     return <MissionItem data={currentItem} />;
   }
 };

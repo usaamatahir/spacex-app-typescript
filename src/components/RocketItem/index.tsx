@@ -11,8 +11,14 @@ const RocketItemContainer = () => {
   if (loading) {
     return <h1>Loading...</h1>;
   } else if (error || !data) {
-    return <h1>Error</h1>;
+    let collection: any = localStorage.getItem("RocketItem");
+    let offlineData = JSON.parse(collection);
+    const currentItem: any = offlineData.rockets?.find(
+      (rocket: any) => rocket?.rocket_id === id
+    );
+    return <RocketItem data={currentItem} />;
   } else {
+    localStorage.setItem("RocketItem", JSON.stringify(data));
     const currentItem: any = data.rockets?.find(
       (rocket: any) => rocket?.rocket_id === id
     );

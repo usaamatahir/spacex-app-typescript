@@ -2,6 +2,7 @@ import React from "react";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
+import styles from "./Slider.module.css";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
@@ -13,6 +14,7 @@ const Slider = () => {
       interval={4000}
       bullets={false}
       fillParent={false}
+      className={styles.slider}
     >
       <div data-src={require("./images/1.jpg")} />
       <div data-src={require("./images/2.jpg")} />

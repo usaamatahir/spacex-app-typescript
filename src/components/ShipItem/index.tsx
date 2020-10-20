@@ -11,8 +11,14 @@ const ShipItemContainer = () => {
   if (loading) {
     return <h1>Loading...</h1>;
   } else if (error || !data) {
-    return <h1>Error</h1>;
+    let collection: any = localStorage.getItem("ShipItem");
+    let offlineData = JSON.parse(collection);
+    const currentItem: any = offlineData.ships?.find(
+      (ship: any) => ship?.ship_id === id
+    );
+    return <ShipItem data={currentItem} />;
   } else {
+    localStorage.setItem("ShipItem", JSON.stringify(data));
     const currentItem: any = data.ships?.find(
       (ship: any) => ship?.ship_id === id
     );
